@@ -30,9 +30,9 @@ namespace Assignment4
                 240,
                 180
             };
-           
-           
-            Display(sessionNames, sessionDates, sessionDurations);
+
+
+            searchForSession(sessionNames, sessionDates, sessionDurations);
 
 
         }
@@ -46,6 +46,22 @@ namespace Assignment4
                 Console.WriteLine($"Duration: {sessionDurations[i]}minutes");
                 Console.WriteLine();
             }
+        }
+        static void searchForSession(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
+        {
+            Console.WriteLine("Enter a Session name");
+            string searchName = Console.ReadLine();
+            int index = Array.IndexOf(sessionNames, searchName);
+            if (index != -1)
+            {
+                Console.WriteLine($"Name :{sessionNames[index]}");
+                Console.WriteLine($"Date: {sessionDates[index]:d MMMM yyyy}");
+                Console.WriteLine($"Start Time: {sessionDates[index]:hh:mm tt}");
+                Console.WriteLine($"Duration: {sessionDurations[index]}minutes");
+                Console.WriteLine();
+            }
+            else
+                Console.WriteLine("Session not found.");
         }
     }
 }
