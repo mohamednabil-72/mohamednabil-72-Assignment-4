@@ -1,4 +1,6 @@
-﻿namespace Assignment4
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Assignment4
 {
     internal class Program
     {
@@ -29,6 +31,21 @@
                 180
             };
            
+           
+            Display(sessionNames, sessionDates, sessionDurations);
+
+
+        }
+        static void Display(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
+        {
+            for (int i = 0; i < sessionNames.Length; i++)
+            {
+                Console.WriteLine($"{i + 1}.{sessionNames[i]}");
+                Console.WriteLine($"Date: {sessionDates[i]:d MMMM yyyy}");
+                Console.WriteLine($"Start Time: {sessionDates[i]:hh:mm tt}");
+                Console.WriteLine($"Duration: {sessionDurations[i]}minutes");
+                Console.WriteLine();
+            }
         }
     }
 }
