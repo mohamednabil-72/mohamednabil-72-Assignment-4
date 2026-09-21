@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Assignment4
 {
@@ -31,6 +32,40 @@ namespace Assignment4
                 240,
                 180
             };
+            //int num = 10;
+            //Console.WriteLine($"Before: {num}");
+
+            //changeValue(ref num);
+
+            //Console.WriteLine($"After: {num}"); 
+            //    int index;
+            //    int duration;
+
+            //    bool found = GetSessionInfo(
+            //        "Arrays",
+            //        sessionNames,
+            //        sessionDurations,
+            //        out index,
+            //        out duration);
+            //    if (found)
+            //    {
+            //        Console.WriteLine($"Index: {index}");
+            //        Console.WriteLine($"Duration: {duration} minutes");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Session not found.");
+            //    }
+
+            string[] names =
+                {
+                    "C# Basics",
+                    "Arrays",
+                    "Functions"
+                };
+            Console.WriteLine($"Before: {names[0]}");
+            ChangeArray(names);
+            Console.WriteLine($"After: {names[0]}");
 
         }
         static void Display(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
@@ -216,6 +251,29 @@ namespace Assignment4
 
             return report.ToString();
         }
+        static void changeValue(ref int num)
+        {
+            num = 19;
+        }
+        static bool GetSessionInfo(string sessionName, string[] sessionNames,int[] sessionDurations,out int index,out int duration)
+        {
+            index = Array.IndexOf(sessionNames, sessionName);
+            if (index != -1)
+            {
+                duration = sessionDurations[index];
+                return true;
+            }
+            duration = 0;
+            return false;
+        }
+        static void ChangeArray(string[] names)
+        {
+            names[0] = "Changed";
+        }
+
+
+
+
 
     }
 }
