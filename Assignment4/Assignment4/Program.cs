@@ -97,7 +97,7 @@ namespace Assignment4
             Console.WriteLine("Enter a session name");
             string searchName = Console.ReadLine();
             bool IsExist = Array.Exists(sessionNames, name => name == searchName);
-            if (exists)
+            if (IsExist)
             {
                 Console.WriteLine("Session exists.");
             }
@@ -141,6 +141,34 @@ namespace Assignment4
             {
                 Console.WriteLine(name);
             }
+        }
+        static void AnalyzeDurations(int[] sessionDurations)
+        {
+            int total = 0;
+            int shortest = sessionDurations[0];
+            int longest = sessionDurations[0];
+
+            foreach (int duration in sessionDurations)
+            {
+                total += duration;
+
+                if (duration < shortest)
+                {
+                    shortest = duration;
+                }
+
+                if (duration > longest)
+                {
+                    longest = duration;
+                }
+            }
+
+            double average = (double)total / sessionDurations.Length;
+
+            Console.WriteLine($"Total Duration: {total} minutes");
+            Console.WriteLine($"Average Duration: {average} minutes");
+            Console.WriteLine($"Shortest Duration: {shortest} minutes");
+            Console.WriteLine($"Longest Duration: {longest} minutes");
         }
     }
 }
