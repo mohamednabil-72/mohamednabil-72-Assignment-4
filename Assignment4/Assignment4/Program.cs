@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 namespace Assignment4
 {
@@ -170,5 +171,51 @@ namespace Assignment4
             Console.WriteLine($"Shortest Duration: {shortest} minutes");
             Console.WriteLine($"Longest Duration: {longest} minutes");
         }
+        static DateTime GetSessionEndTime(DateTime startTime, int duration)
+        {
+            return startTime.AddMinutes(duration);
+        }
+        static DateTime ReadSessionDate()
+        {
+            Console.Write("Enter session date: ");
+            return DateTime.Parse(Console.ReadLine());
+        }
+        static string BuildReportUsingString(
+            string[] sessionNames,
+            DateTime[] sessionDates,
+            int[] sessionDurations)
+        {
+            string report = "";
+
+            for (int i = 0; i < sessionNames.Length; i++)
+            {
+                report += $"{i + 1}. {sessionNames[i]}\n";
+                report += $"Date: {sessionDates[i]:d MMMM yyyy}\n";
+                report += $"Start Time: {sessionDates[i]:hh:mm tt}\n";
+                report += $"Duration: {sessionDurations[i]} minutes\n";
+                report += "\n";
+            }
+
+            return report;
+        }
+        static string BuildReportUsingStringBuilder(
+    string[] sessionNames,
+    DateTime[] sessionDates,
+    int[] sessionDurations)
+        {
+            StringBuilder report = new StringBuilder();
+
+            for (int i = 0; i < sessionNames.Length; i++)
+            {
+                report.AppendLine($"{i + 1}. {sessionNames[i]}");
+                report.AppendLine($"Date: {sessionDates[i]:d MMMM yyyy}");
+                report.AppendLine($"Start Time: {sessionDates[i]:hh:mm tt}");
+                report.AppendLine($"Duration: {sessionDurations[i]} minutes");
+                report.AppendLine();
+            }
+
+            return report.ToString();
+        }
+
     }
 }
