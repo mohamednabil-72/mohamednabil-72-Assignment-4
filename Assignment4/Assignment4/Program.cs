@@ -32,40 +32,11 @@ namespace Assignment4
                 240,
                 180
             };
-            //int num = 10;
-            //Console.WriteLine($"Before: {num}");
+            Console.WriteLine(CalculateTotalDuration(120, 180));
+            Console.WriteLine(CalculateTotalDuration(120, 180, 240));
+            Console.WriteLine(CalculateTotalDuration(60, 90, 120, 180, 240));
 
-            //changeValue(ref num);
-
-            //Console.WriteLine($"After: {num}"); 
-            //    int index;
-            //    int duration;
-
-            //    bool found = GetSessionInfo(
-            //        "Arrays",
-            //        sessionNames,
-            //        sessionDurations,
-            //        out index,
-            //        out duration);
-            //    if (found)
-            //    {
-            //        Console.WriteLine($"Index: {index}");
-            //        Console.WriteLine($"Duration: {duration} minutes");
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Session not found.");
-            //    }
-
-            string[] names =
-                {
-                    "C# Basics",
-                    "Arrays",
-                    "Functions"
-                };
-            Console.WriteLine($"Before: {names[0]}");
-            ChangeArray(names);
-            Console.WriteLine($"After: {names[0]}");
+          
 
         }
         static void Display(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
@@ -269,6 +240,17 @@ namespace Assignment4
         static void ChangeArray(string[] names)
         {
             names[0] = "Changed";
+        }
+        static int CalculateTotalDuration(params int[] durations)
+        {
+            int total = 0;
+
+            foreach (int duration in durations)
+            {
+                total += duration;
+            }
+
+            return total;
         }
 
 
