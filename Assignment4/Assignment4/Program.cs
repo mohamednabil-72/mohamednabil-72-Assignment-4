@@ -32,11 +32,11 @@ namespace Assignment4
                 240,
                 180
             };
-            Console.WriteLine(CalculateTotalDuration(120, 180));
-            Console.WriteLine(CalculateTotalDuration(120, 180, 240));
-            Console.WriteLine(CalculateTotalDuration(60, 90, 120, 180, 240));
+            DisplaySessionDateDetails(
+                sessionNames[0],
+                sessionDates[0],
+                sessionDurations[0]);
 
-          
 
         }
         static void Display(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
@@ -252,7 +252,21 @@ namespace Assignment4
 
             return total;
         }
+        static void DisplaySessionDateDetails(string sessionName,DateTime sessionDate,int duration)
+        
+        {
+            DateTime endTime = sessionDate.AddMinutes(duration);
 
+            Console.WriteLine($"Session: {sessionName}");
+            Console.WriteLine($"Date: {sessionDate:d MMMM yyyy}");
+            Console.WriteLine($"Day: {sessionDate.DayOfWeek}");
+            Console.WriteLine($"Year: {sessionDate.Year}");
+            Console.WriteLine($"Month: {sessionDate.Month}");
+            Console.WriteLine($"Day Number: {sessionDate.Day}");
+            Console.WriteLine($"Start Time: {sessionDate:hh:mm tt}");
+            Console.WriteLine($"Duration: {duration} minutes");
+            Console.WriteLine($"End Time: {endTime:hh:mm tt}");
+        }
 
 
 
