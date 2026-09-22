@@ -32,8 +32,8 @@ namespace Assignment4
                 240,
                 180
             };
-            DisplayDateFormats(sessionDates[1]);
 
+            ReadValidDate();
 
         }
         static void Display(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
@@ -340,7 +340,26 @@ namespace Assignment4
             Console.WriteLine(sessionDate.ToString("dddd, dd MMMM yyyy"));
             Console.WriteLine(sessionDate.ToString("hh:mm tt"));
         }
+        static DateTime ReadValidDate()
+        {
+            while (true)
+            {
+                Console.Write("Enter date (yyyy-MM-dd HH:mm): ");
+                string input = Console.ReadLine();
 
+                if (DateTime.TryParseExact(
+                    input,
+                    "yyyy-MM-dd HH:mm",
+                    null,
+                    System.Globalization.DateTimeStyles.None,
+                    out DateTime date))
+                {
+                    return date;
+                }
+
+                Console.WriteLine("Invalid date. Please try again.");
+            }
+        }
 
     }
 }
