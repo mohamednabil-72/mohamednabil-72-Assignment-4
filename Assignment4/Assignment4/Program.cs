@@ -33,7 +33,7 @@ namespace Assignment4
                 180
             };
 
-            ReadValidDate();
+            ReadMenuOption();
 
         }
         static void Display(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
@@ -358,6 +358,23 @@ namespace Assignment4
                 }
 
                 Console.WriteLine("Invalid date. Please try again.");
+            }
+        }
+        static int ReadMenuOption()
+        {
+            while (true)
+            {
+                Console.Write("Choose an option: ");
+                string input = Console.ReadLine();
+
+                try
+                {
+                    return int.Parse(input);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid menu option. Enter a number.");
+                }
             }
         }
 
