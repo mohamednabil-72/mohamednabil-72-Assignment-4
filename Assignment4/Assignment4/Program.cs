@@ -33,7 +33,7 @@ namespace Assignment4
                 180
             };
 
-            ReadMenuOption();
+            AccessSessionByIndex(sessionNames);
 
         }
         static void Display(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
@@ -375,6 +375,20 @@ namespace Assignment4
                 {
                     Console.WriteLine("Invalid menu option. Enter a number.");
                 }
+            }
+        }
+        static void AccessSessionByIndex(string[] sessionNames)
+        {
+            Console.Write("Enter session index: ");
+            int index = int.Parse(Console.ReadLine());
+
+            try
+            {
+                Console.WriteLine($"Session: {sessionNames[index]}");
+            }
+            catch (IndexOutOfRangeException)
+            {
+                Console.WriteLine("The selected session index is out of range.");
             }
         }
 
