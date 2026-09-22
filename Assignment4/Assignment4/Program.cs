@@ -32,12 +32,9 @@ namespace Assignment4
                 240,
                 180
             };
-            DisplaySessionDateDetails(
-                sessionNames[0],
-                sessionDates[0],
-                sessionDurations[0]);
+           
 
-
+            CalcaluteDateDifference(sessionNames, sessionDates);
         }
         static void Display(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
         {
@@ -266,6 +263,21 @@ namespace Assignment4
             Console.WriteLine($"Start Time: {sessionDate:hh:mm tt}");
             Console.WriteLine($"Duration: {duration} minutes");
             Console.WriteLine($"End Time: {endTime:hh:mm tt}");
+        }
+        static void CalcaluteDateDifference(string[] sessionNames, DateTime[] sessionDates)
+        {
+            Console.WriteLine("Frist Session");
+            string fristSession = Console.ReadLine();
+            Console.WriteLine("Second Session");
+            string secondSession = Console.ReadLine();
+            int fristindex = Array.IndexOf(sessionNames, fristSession);
+            int secondindex = Array.IndexOf(sessionNames, secondSession);
+            TimeSpan difference = sessionDates[secondindex] - sessionDates[fristindex];
+            Console.WriteLine();
+            Console.WriteLine("Difference:");
+            Console.WriteLine($"{difference.Days} days");
+            Console.WriteLine($"{difference.TotalHours} hours");
+
         }
 
 
