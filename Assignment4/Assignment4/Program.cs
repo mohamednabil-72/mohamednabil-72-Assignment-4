@@ -32,9 +32,9 @@ namespace Assignment4
                 240,
                 180
             };
+            DisplayDateFormats(sessionDates[1]);
 
 
-            DisplaySessionStatus(sessionNames, sessionDates);
         }
         static void Display(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
         {
@@ -332,7 +332,14 @@ namespace Assignment4
             Console.WriteLine($"{remaining.Days} days");
             Console.WriteLine($"{remaining.Hours} hours");
         }
-
+        static void DisplayDateFormats(DateTime sessionDate)
+        {
+            Console.WriteLine(sessionDate.ToString("yyyy-MM-dd"));
+            Console.WriteLine(sessionDate.ToString("dd/MM/yyyy"));
+            Console.WriteLine(sessionDate.ToString("dd MMMM yyyy"));
+            Console.WriteLine(sessionDate.ToString("dddd, dd MMMM yyyy"));
+            Console.WriteLine(sessionDate.ToString("hh:mm tt"));
+        }
 
 
     }
