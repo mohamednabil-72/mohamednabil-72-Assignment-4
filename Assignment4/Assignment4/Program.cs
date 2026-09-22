@@ -296,7 +296,42 @@ namespace Assignment4
                 }
             }
         }
+        static void FindNextSession( string[] sessionNames,DateTime[] sessionDates)
 
+        {
+            DateTime now = DateTime.Now;
+
+            int nextIndex = -1;
+            DateTime nearestDate = DateTime.MaxValue;
+
+            for (int i = 0; i < sessionDates.Length; i++)
+            {
+                if (sessionDates[i] > now && sessionDates[i] < nearestDate)
+                {
+                    nearestDate = sessionDates[i];
+                    nextIndex = i;
+                }
+            }
+
+            if (nextIndex == -1)
+            {
+                Console.WriteLine("No upcoming sessions.");
+                return;
+            }
+
+            TimeSpan remaining = nearestDate - now;
+
+            Console.WriteLine("Next Session:");
+            Console.WriteLine();
+            Console.WriteLine(sessionNames[nextIndex]);
+            Console.WriteLine($"{nearestDate:d MMMM yyyy}");
+            Console.WriteLine($"{nearestDate:hh:mm tt}");
+
+            Console.WriteLine();
+            Console.WriteLine("Time Remaining:");
+            Console.WriteLine($"{remaining.Days} days");
+            Console.WriteLine($"{remaining.Hours} hours");
+        }
 
 
 
