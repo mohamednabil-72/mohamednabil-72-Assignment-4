@@ -32,9 +32,9 @@ namespace Assignment4
                 240,
                 180
             };
-           
 
-            CalcaluteDateDifference(sessionNames, sessionDates);
+
+            DisplaySessionStatus(sessionNames, sessionDates);
         }
         static void Display(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
         {
@@ -278,6 +278,23 @@ namespace Assignment4
             Console.WriteLine($"{difference.Days} days");
             Console.WriteLine($"{difference.TotalHours} hours");
 
+        }
+        static void DisplaySessionStatus( string[] sessionNames,DateTime[] sessionDates)
+
+        {
+            DateTime now = DateTime.Now;
+
+            for (int i = 0; i < sessionNames.Length; i++)
+            {
+                if (sessionDates[i] < now)
+                {
+                    Console.WriteLine($"{sessionNames[i]} Past");
+                }
+                else
+                {
+                    Console.WriteLine($"{sessionNames[i]} Upcoming");
+                }
+            }
         }
 
 
