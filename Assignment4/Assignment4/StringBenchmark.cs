@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Assignment4
 {
+    [MemoryDiagnoser]
     public class StringBenchmark
     {
         [Params(100, 1000, 10000, 100000)]
