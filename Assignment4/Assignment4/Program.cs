@@ -32,21 +32,27 @@ namespace Assignment4
                 240,
                 180
             };
-            Console.Write("Enter duration: ");
-            int duration = int.Parse(Console.ReadLine());
+            //Console.Write("Enter duration: ");
+            //int duration = int.Parse(Console.ReadLine());
 
-            try
-            {
-                ValidateDuration(duration);
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                Console.WriteLine("Input operation finished.");
-            }
+            //try
+            //{
+            //    ValidateDuration(duration);
+            //}
+            //catch (ArgumentException ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+            //finally
+            //{
+            //    Console.WriteLine("Input operation finished.");
+            //}
+            string report = BuildScheduleReport(
+                    sessionNames,
+                    sessionDates,
+                    sessionDurations);
+
+            Console.WriteLine(report);
 
         }
         static void Display(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
@@ -412,6 +418,21 @@ namespace Assignment4
             }
 
             Console.WriteLine("Duration accepted.");
+        }
+        static string BuildScheduleReport( string[] sessionNames, DateTime[] sessionDates  ,int[] sessionDurations)
+
+        {
+            string result = "";
+
+            for (int i = 0; i < sessionNames.Length; i++)
+            {
+                result += $"{sessionNames[i]} - ";
+                result += $"{sessionDates[i]:dd/MM/yyyy hh:mm tt} - ";
+                result += $"{sessionDurations[i]} minutes";
+                result += "\n";
+            }
+
+            return result;
         }
 
 
