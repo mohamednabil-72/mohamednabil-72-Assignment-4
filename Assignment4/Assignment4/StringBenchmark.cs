@@ -1,42 +1,37 @@
 ﻿using BenchmarkDotNet.Attributes;
-using System;
-using System.Collections.Generic;
 using System.Text;
 
-namespace Assignment4
+[MemoryDiagnoser]
+public class StringBenchmark
 {
-    [MemoryDiagnoser]
-    public class StringBenchmark
+    [Params(100, 1000, 10000, 100000)]
+    public int Iterations;
+
+    [Benchmark]
+    public string StringConcatenation()
     {
-        [Params(100, 1000, 10000, 100000)]
-        public int Iterations;
+        string result = "";
+        string text = "Session\n";
 
-        [Benchmark]
-        public string StringConcatenation()
+        for (int i = 0; i < Iterations; i++)
         {
-            string result = "";
-
-            for (int i = 0; i < Iterations; i++)
-            {
-                result += "Session " + i + "\n";
-            }
-
-            return result;
+            result += text;
         }
 
-        [Benchmark]
-        public string StringBuilderConcatenation()
+        return result;
+    }
+
+    [Benchmark]
+    public string StringBuilderConcatenation()
+    {
+        StringBuilder result = new StringBuilder();
+        string text = "Session\n";
+
+        for (int i = 0; i < Iterations; i++)
         {
-            StringBuilder result = new StringBuilder();
-
-            for (int i = 0; i < Iterations; i++)
-            {
-                result.Append("Session ");
-                result.Append(i);
-                result.AppendLine();
-            }
-
-            return result.ToString();
+            result.Append(text);
         }
+
+        return result.ToString();
     }
 }
