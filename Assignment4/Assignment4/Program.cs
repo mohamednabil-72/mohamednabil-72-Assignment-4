@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using BenchmarkDotNet.Running;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -47,12 +48,8 @@ namespace Assignment4
             //{
             //    Console.WriteLine("Input operation finished.");
             //}
-            string report = BuildScheduleReportUsingStringBuilder(
-         sessionNames,
-         sessionDates,
-         sessionDurations);
 
-            Console.WriteLine(report);
+            BenchmarkRunner.Run<StringBenchmark>();
 
         }
         static void Display(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
