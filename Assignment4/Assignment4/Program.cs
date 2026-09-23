@@ -32,8 +32,17 @@ namespace Assignment4
                 240,
                 180
             };
+            Console.Write("Enter duration: ");
+            int duration = int.Parse(Console.ReadLine());
 
-            AccessSessionByIndex(sessionNames);
+            try
+            {
+                ValidateDuration(duration);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
         }
         static void Display(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
@@ -390,6 +399,15 @@ namespace Assignment4
             {
                 Console.WriteLine("The selected session index is out of range.");
             }
+        }
+        static void ValidateDuration(int duration)
+        {
+            if (duration <= 0)
+            {
+                throw new ArgumentException("Duration must be greater than zero.");
+            }
+
+            Console.WriteLine("Duration accepted.");
         }
 
     }
