@@ -47,10 +47,10 @@ namespace Assignment4
             //{
             //    Console.WriteLine("Input operation finished.");
             //}
-            string report = BuildScheduleReport(
-                    sessionNames,
-                    sessionDates,
-                    sessionDurations);
+            string report = BuildScheduleReportUsingStringBuilder(
+         sessionNames,
+         sessionDates,
+         sessionDurations);
 
             Console.WriteLine(report);
 
@@ -434,7 +434,20 @@ namespace Assignment4
 
             return result;
         }
+        static string BuildScheduleReportUsingStringBuilder(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
+        {
+            StringBuilder result = new StringBuilder();
 
+            for (int i = 0; i < sessionNames.Length; i++)
+            {
+                result.Append($"{sessionNames[i]} - ");
+                result.Append($"{sessionDates[i]:dd/MM/yyyy hh:mm tt} - ");
+                result.Append($"{sessionDurations[i]} minutes");
+                result.AppendLine();
+            }
+
+            return result.ToString();
+        }
 
     }
 }
