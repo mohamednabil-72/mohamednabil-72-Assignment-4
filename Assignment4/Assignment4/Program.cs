@@ -43,6 +43,10 @@ namespace Assignment4
             {
                 Console.WriteLine(ex.Message);
             }
+            finally
+            {
+                Console.WriteLine("Input operation finished.");
+            }
 
         }
         static void Display(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
@@ -409,6 +413,7 @@ namespace Assignment4
 
             Console.WriteLine("Duration accepted.");
         }
+
 
     }
 }
